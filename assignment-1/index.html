@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Bookstore</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="header">
+        <div class="logo">Bookstore</div>
+        <div class="profile">
+          <img
+            src="https://vapa.vn/wp-content/uploads/2022/12/anh-3d-thien-nhien.jpeg"
+            alt="avartar"
+            class="profile__avt"
+          />
+          <div class="profile__name">John Doe</div>
+        </div>
+      </header>
+      <hr />
+      <div class="search">
+        <input
+          type="text"
+          placeholder="Search books"
+          class="search__input input"
+          oninput="searchWithBook()"
+        />
+        <button class="btn btn-primary btn-search">Search</button>
+        <button class="btn btn-primary btn-them">Add book</button>
+      </div>
+      <!-- Table -->
+      <table id="customers"></table>
+    </div>
+    <div class="modal">
+      <div class="overlay"></div>
+      <div class="modal__content">
+        <div class="modal__header">
+          <h3>Add book</h3>
+          <button class="btn btn-primary btn-close">Close</button>
+        </div>
+        <div class="modal__body">
+          <form class="form">
+            <div class="field">
+              <label for="title">Tiêu đề</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Tiêu đề"
+                class="input"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="tacgia">Tác giả</label>
+              <input
+                type="text"
+                id="tacgia"
+                name="tacgia"
+                class="input"
+                required
+                placeholder="Tác giả"
+              />
+            </div>
+            <div class="field">
+              <label for="chude">Chủ đề</label>
+              <input
+                type="text"
+                class="input"
+                id="chude"
+                name="chude"
+                required
+                placeholder="Chủ đề"
+              />
+            </div>
+            <button class="btn btn-primary btn-add">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
