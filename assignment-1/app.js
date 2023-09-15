@@ -32,9 +32,19 @@ const renderBookList = (bookList) => {
   table.innerHTML = html2;
 };
 
-const bookList = [
-  { title: "Book 1", tacgia: "Author 1", chude: "Category 1", id: 1 },
-  { title: "Book 2", tacgia: "Author 2", chude: "Category 2", id: 2 },
+const bookList = JSON.parse(localStorage.getItem("bookList")) || [
+  {
+    title: "Book 1",
+    tacgia: "Tác giả 1",
+    chude: "Chủ đề 1",
+    id: 1,
+  },
+  {
+    title: "Book 2",
+    tacgia: "Tác giả 2",
+    chude: "Chủ đề 2",
+    id: 2,
+  },
 ];
 
 renderBookList(bookList);
@@ -50,9 +60,10 @@ const addBook = () => {
     return;
   } else {
     bookList.push(bookItem);
-    // localStorage.setItem("bookList", JSON.stringify(bookList));
+    localStorage.setItem("bookList", JSON.stringify(bookList));
     renderBookList(bookList);
     modal.classList.remove("active");
+    form.reset();
   }
 };
 
@@ -70,7 +81,12 @@ const searchWithBook = () => {
 };
 
 const handleDeleteBook = (id) => {
-  const bookNewList = [...bookList].filter((book) => book.id !== Number(id));
-  //   localStorage.setItem("bookList", JSON.stringify(bookNewList));
-  renderBookList(bookNewList);
+  const value = prompt(
+    `Bạn có chắc muốn xóa sách không? Điền "Ok" để xác nhận`
+  );
+  if (value === "OK" || value === "ok" || value === "Ok" || value === "oK") {
+    const bookNewList = bookList.filter((book) => book.id !== Number(id));
+    localStorage.setItem("bookList", JSON.stringify(bookNewList));
+    renderBookList(JSON.parse(localStorage.getItem("bookList")));
+  }
 };
